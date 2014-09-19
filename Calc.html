@@ -1,0 +1,137 @@
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	<style type="text/css">
+
+		form fieldset {
+			margin: 20%	 auto 10px auto;
+			width: 30%;
+			border: 2px solid #e8e8e8;
+			padding: 3%;
+		}
+		
+		form legend {
+			padding: 6px;
+			margin: 10px;
+			font-size: 90%;
+			font-weight: bold;
+			color: #696969;
+			background-color: #e8e8e8;
+		}
+		
+		form label{
+			display: block;
+			font-size: 14px;
+			color: #808080;
+		}
+		
+		form .a{
+			width: 100%;
+			border: 2px solid #e8e8e8;
+			color: #808080;
+		}
+		
+		form .a option {
+			color: #808080;
+		}
+		
+		select {
+			border: 2px solid #e8e8e8;
+			color: #808080;
+		}
+				
+		form input.botao {
+			display: block;
+			width: auto;
+			float: right;
+
+		}
+	</style>
+	
+	<script type="text/javascript">
+		function calcular(oper){
+			var valor1 = document.calcform.valor1.value;
+			
+		
+			if ((parseFloat(valor1)* 11/100) < 482.93) {
+				var INSS = parseFloat(valor1) * 11/100;
+			}
+			else {
+					var INSS = 482.93;
+				} 			
+			
+			var ISSQN = (parseFloat(valor1) - INSS) *3/100;
+						
+			if (parseFloat(valor1) > 1787.78 && parseFloat(valor1) < 2679.29 ) {
+				var IRRF = "Alíquota 7,5% valor do imposto " + ((parseFloat(valor1) * 7.5/100) - 134.08) + " reais";
+				var vIRRF = (parseFloat(valor1) * 7.5/100) - 134.08;
+			}
+			else {
+					var IRRF = "Nao desconta";
+					var vIRRF = 0;
+					
+				}
+				
+			if (parseFloat(valor1) > 2679.30 && parseFloat(valor1) < 3572.43 ) {
+				var IRRF = "Alíquota 15% valor do imposto " + ((parseFloat(valor1) * 15/100) - 335.03) + " reais";
+				var vIRRF = (parseFloat(valor1) * 15/100) - 335.03;
+			}
+			
+			if (parseFloat(valor1) > 3572.44 && parseFloat(valor1) < 4463.81 ) {
+				var IRRF = "Alíquota 22,5% valor do imposto  " + ((parseFloat(valor1) * 22.5/100) - 602.96) + " reais";
+				var vIRRF = (parseFloat(valor1) * 22.5/100) - 602.96;
+			}
+			if (parseFloat(valor1) > 4463.81 ) {
+				var IRRF = "Alíquota 27% valor do imposto  " + ((parseFloat(valor1) * 27/100) - 826.15) + " reais";				
+				var vIRRF = (parseFloat(valor1) * 27/100) - 826.15;
+			}
+			
+			
+			var RESULTADO = parseFloat(valor1) - INSS - ISSQN - vIRRF;	
+									
+			document.calcform.INSS.value = INSS;
+			document.calcform.ISSQN.value = ISSQN;
+			document.calcform.IRRF.value = IRRF;
+			document.calcform.RESULTADO.value = RESULTADO;
+		}
+	</script>
+</head>
+
+<body>
+
+		<form name="calcform" method="post" action="">
+			<fieldset>
+				<legend> Calculadora </legend>
+				
+									<!-- Labels -->
+				
+				<!-- label1 e input1-->
+				<label for="valor1">Digite o valor bruto</label>
+				<input class="a" type="text" name="valor1" id="valor1" />	
+
+
+				<!-- Label com o INSSultado -->
+				<label for="INSS"> INSS: </label>
+				<input type="text" name="INSS" id="INSS" class="a"/>
+				
+				<!-- Label com o INSSultado -->
+				<label for="ISSQN"> ISSQN: </label>
+				<input type="text" name="ISSQN" id="ISSQN" class="a"/>
+				
+				<!-- Label com o INSSultado -->
+				<label for="IRRF"> IRRF: </label>
+				<input type="text" name="IRRF" id="IRRF" class="a"/>
+				
+				<!-- Label com o INSSultado -->
+				<label for="RESULTADO"> Valor liquido: </label>
+				<input type="text" name="RESULTADO" id="RESULTADO" class="a"/>
+				
+				<!-- botão para executar o calculo -->
+				<input type="button" value="Calcular" class="botao" onClick="calcular(document.calcform.value)"/> 
+				
+			</fieldset>
+		</form>
+
+</body>
+
+</html>
