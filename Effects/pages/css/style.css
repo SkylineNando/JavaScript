@@ -1,0 +1,45 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+#quadrinho{
+  width: 800px;
+  height: 600px;
+}
+#quadrinho .page{
+  background-color: #FFF;
+  background-size: cover;
+  
+  height: 600px;
+}
+#quadrinho .hard{
+  background-color: #CCC;
+  background-size: cover;
+}
+
+#capa{
+  background: url("jpg");
+}
+#pagina-2{
+  background: url("png");
+}
+#pagina-3{
+  background: url("jpg");
+}
+#pagina-4{
+  background: url("jpg");
+}
+#pagina-5{
+  background: url("jpg");
+}
+#pagina-6{
+  background: url("jpg");
+}
+#pagina-7{
+  background: url("jpg");
+}
+#pagina-8{
+  background: url("jpg");
+}
+#pagina-9{
+  background: url("jpg");
+}
