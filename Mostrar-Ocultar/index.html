@@ -1,0 +1,35 @@
+<script>
+function mostrar(id){
+ document.getElementById(id).style.display = 'block';
+}
+function fechar(id){
+ if(document.getElementById(id).style.display == 'block'){ 
+  document.getElementById(id).style.display = 'none';
+ }else{
+  document.getElementById(id).style.display = 'block';
+ }
+}
+
+</script>
+<span onclick="mostrar('e1')" style="color: purple; cursor: pointer;">Exemplo 1</span><br />
+<span onclick="mostrar('e2')" style="color: purple; cursor: pointer;">Exemplo 2</span><br />
+
+<div id="e1" style="border: 1px solid black; display: none; padding: 5px;">
+<span style="color: #ff6600; font-family: &quot;helvetica neue&quot; , &quot;arial&quot; , &quot;helvetica&quot; , sans-serif; font-size: large;"><b>New Dawn Fades</b></span><br />
+<span style="font-family: &quot;helvetica neue&quot; , &quot;arial&quot; , &quot;helvetica&quot; , sans-serif;"><i>Joy Division</i></span><br />
+<div style="font-family: georgia, &quot;times new roman&quot;, serif;">
+<br /></div>
+<div style="font-family: georgia, &quot;times new roman&quot;, serif;">
+Change of speed, a change of style</div>
+
+<span onclick="fechar('e1')" style="cursor:pointer; color:#F60;">Close</span>
+</div>
+
+<div id="e2" style="border: 1px solid black; display: none; padding: 5px;">
+<span style="color: #ff6600; font-family: &quot;helvetica neue&quot; , &quot;arial&quot; , &quot;helvetica&quot; , sans-serif; font-size: large;"><b>Candidate</b></span><br />
+<span style="font-family: &quot;helvetica neue&quot; , &quot;arial&quot; , &quot;helvetica&quot; , sans-serif;"><i>Joy Division</i></span><br />
+<div style="font-family: georgia, &quot;times new roman&quot;, serif;">
+<br /></div>
+<span style="font-family: &quot;georgia&quot; , &quot;times new roman&quot; , serif;">Forced by the pressure, the territory's marked</span><br />
+
+<span onclick="fechar('e2')" style="cursor:pointer; color:#F60;">Close</span></div>
