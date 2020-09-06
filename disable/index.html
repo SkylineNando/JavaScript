@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form>
+  <select id="mySelect">
+    <option>Cats</option>
+    <option>Dogs</option>
+  </select>
+</form>
+
+<p>Click the button to disable the dropdown list.</p>
+
+<label>
+<input type='radio' class='flat' name='allowschildren' id='allowschildren' value='YES' checked  onclick="yeschildren()"> Sim -
+                            </label>
+<label><input type='radio' class='flat' name='allowschildren' id='allowschildren' value='NO'  onclick="notchildren()"> Não
+                            </label>
+
+<script>
+function yeschildren() {
+  document.getElementById("mySelect").disabled = false;
+}
+function notchildren() {
+  document.getElementById("mySelect").disabled = true;
+}
+</script>
+
+</body>
+</html>
