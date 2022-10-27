@@ -1,0 +1,10 @@
+.autocomplete - suggestions {
+        border: 1 px solid #e4e4e4;background: #F4F4F4;cursor: default;overflow: auto
+    }.autocomplete - suggestion {
+        padding: 2 px 5 px;font - size: 1.2 em;white - space: nowrap;overflow: hidden
+    }.autocomplete - selected {
+        background: #f0f0f0
+    }.autocomplete - suggestions strong {
+        font - weight: normal;
+        color: #3399ff;font-weight:bolder}.btn{border-radius:3px}a.btn-success,a.btn-primary,a.btn-warning,a.btn-danger{color:# fff
+    }
