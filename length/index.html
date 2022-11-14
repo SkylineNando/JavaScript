@@ -1,0 +1,11 @@
+<script>
+function calcular(el) {
+  const valor = document.getElementById('valor');
+  const caracteres = el.value.length;
+  valor.value = parseFloat(caracteres * 1); //formatado para duas casas decimais
+}
+</script>
+
+<textarea onkeyup="calcular(this)"  maxlength='300'  cols="30" rows="4" ></textarea>
+<b>Máximo de <input type="button" style="color: green;" value="0" id="valor"> - 300 caracteres.</b>
+                          
