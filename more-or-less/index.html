@@ -1,0 +1,39 @@
+              
+              <style type="text/css">
+              .p1{display:block;}
+              </style>
+
+              <div class="p1" >
+              A cidade de Alto Paraíso situa-se a poucas dezenas de quilômetros do Parque Nacional da Chapada dos Veadeiros. A cidade de Alto Paraíso conta com infraestrutura urbana mais desenvolvida que a do povoado de São Jorge, pois dispõe de uma quantidade maior de pousadas, bares, restaurantes, lojas de artigos específicos, pequenas praças, bancos e caixas eletrônicos, mercados, farmácias, padarias etc.
+
+Além disso, a cidade de Alto Paraíso representa um ponto estratégico dentro da Chapada dos Veadeiros, por ser próxima e mais equidistante de numerosas cachoeiras, matas e trilhas - ao passo que o povoado de São Jorge, embora constitua uma atração interessante, é mais isolado de vários outros pontos turísticos da Chapada.
+            
+              </div>
+              <button class="More">..Ver mais</button>
+              
+              <script>
+
+                  document.querySelectorAll('button.More').forEach(bttn=>{
+                  bttn.dataset.state=0;
+                  bttn.addEventListener('click',function(e){
+                    let div=this.previousElementSibling;
+                        div.dataset.tmp=div.textContent;
+                        div.textContent=div.dataset.content;
+                        div.dataset.content=div.dataset.tmp;
+
+                        this.innerHTML=this.dataset.state==1 ? 'Ver mais...' : 'Ver menos...';
+                        this.dataset.state=1-this.dataset.state;
+                  })
+                });
+
+                document.querySelectorAll('div.p1').forEach(div=>{
+                  div.dataset.content=div.textContent;
+                  div.textContent=div.textContent.substr(0,200) + '...';
+                })
+
+              </script>
+
+            
+            </p>
+
+          </div>
