@@ -1,0 +1,20 @@
+<!-- Bloquear o botão direito do mouse:
+Você pode adicionar um script JavaScript na página para bloquear o botão direito do mouse. No entanto, saiba que isso não impedirá usuários experientes de contornar essa restrição. 
+-->
+
+<script>
+    document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+    });
+</script>
+<!-- Desabilitar a seleção de texto:
+Você pode usar CSS para desabilitar a seleção de texto. Isso impedirá que os usuários selecionem e copiem o texto da página.
+-->
+<style>
+    body {
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+</style>
