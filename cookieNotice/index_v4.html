@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Política de Cookies</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+    #cookieNotice {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 16px;
+      box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    }
+    #cookieNotice p {
+      margin: 0;
+      padding: 5px 0;
+    }
+    #acceptCookies {
+      background-color: #ff6600;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    #acceptCookies:hover {
+      background-color: #ff8533;
+    }
+  </style>
+</head>
+<body>
+
+<div id="cookieNotice">
+  <p>🍪 Este site utiliza cookies para proporcionar uma melhor experiência. Ao continuar a usar o site, você concorda com o uso de cookies. <a href="/politica-de-privacidade" style="color: #ff6600;">Saiba mais</a></p>
+  <button id="acceptCookies">Aceitar Cookies</button>
+</div>
+
+<script>
+// Função para definir um cookie
+function setCookie(name, value, days) {
+  const expires = new Date();
+  expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+  document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+}
+
+// Função para obter o valor de um cookie
+function getCookie(name) {
+  const cookieName = `${name}=`;
+  const cookieArray = document.cookie.split(';');
+  for (let i = 0; i < cookieArray.length; i++) {
+    let cookie = cookieArray[i];
+    while (cookie.charAt(0) === ' ') {
+      cookie = cookie.substring(1);
+    }
+    if (cookie.indexOf(cookieName) === 0) {
+      return cookie.substring(cookieName.length, cookie.length);
+    }
+  }
+  return null;
+}
+
+// Função para exibir o aviso de cookies
+function showCookieNotice() {
+  const cookieNotice = document.getElementById('cookieNotice');
+  cookieNotice.style.display = 'block';
+}
+
+// Função para aceitar os cookies
+function acceptCookies() {
+  setCookie('cookiesAccepted', 'true', 365); // Cookie válido por um ano
+  const cookieNotice = document.getElementById('cookieNotice');
+  cookieNotice.style.display = 'none';
+}
+
+// Verifica se o aviso de cookies deve ser exibido
+if (!getCookie('cookiesAccepted')) {
+  showCookieNotice();
+}
+
+// Evento de clique no botão de aceitar cookies
+document.getElementById('acceptCookies').addEventListener('click', acceptCookies);
+</script>
+
+</body>
+</html>
