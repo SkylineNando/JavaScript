@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificação de Senha</title>
+</head>
+<body>
+    <h1>Cadastro</h1>
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" oninput="verificarSenha()" />
+    <br />
+    <label for="confirmarSenha">Confirmar Senha:</label>
+    <input type="password" id="confirmarSenha" oninput="verificarSenha()" />
+    <br />
+    <input type="checkbox" id="mostrarSenhas" onchange="alternarVisibilidade()" />
+    <label for="mostrarSenhas">Mostrar Senhas</label>
+    <br />
+    <button id="cadastrar" onclick="cadastrar()" disabled>Cadastrar</button>
+    <p id="mensagemErro"></p>
+
+    <script>
+        const senhaInput = document.getElementById("senha");
+        const confirmarSenhaInput = document.getElementById("confirmarSenha");
+        const cadastrarButton = document.getElementById("cadastrar");
+        const mensagemErro = document.getElementById("mensagemErro");
+
+        function verificarSenha() {
+            const senha = senhaInput.value;
+            const confirmarSenha = confirmarSenhaInput.value;
+
+            cadastrarButton.disabled = senha !== confirmarSenha;
+            mensagemErro.textContent = cadastrarButton.disabled ? "As senhas não coincidem." : "";
+        }
+
+        function alternarVisibilidade() {
+            const mostrarSenhasCheckbox = document.getElementById("mostrarSenhas");
+            senhaInput.type = confirmarSenhaInput.type = mostrarSenhasCheckbox.checked ? "text" : "password";
+        }
+
+        function cadastrar() {
+            const senha = senhaInput.value;
+
+            if (senha.length < 8) {
+                mensagemErro.textContent = "A senha deve ter pelo menos 8 caracteres.";
+                return;
+            }
+
+            alert("Cadastro realizado com sucesso!");
+            senhaInput.value = confirmarSenhaInput.value = "";
+            cadastrarButton.disabled = true;
+            mensagemErro.textContent = "";
+            document.getElementById("mostrarSenhas").checked = false;
+            senhaInput.type = confirmarSenhaInput.type = "password";
+        }
+    </script>
+</body>
+</html>
