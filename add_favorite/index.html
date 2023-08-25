@@ -1,0 +1,61 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.favorite-button').each(function() {
+        var button = $(this);
+        var item_id = button.data('item-id');
+        var item_tipo = button.data('item-tipo');
+
+        $.ajax({
+            type: 'POST',
+            url: 'check_favorite.php',
+            data: { item_id: item_id, item_tipo: item_tipo },
+            success: function(response) {
+                if (response === 'favorited') {
+                    button.addClass('favorited');
+                    button.text('Favoritado');
+                }
+            }
+        });
+    });
+
+    $('.favorite-button').click(function(event) {
+        event.preventDefault(); // Evita o comportamento padrão do link
+
+        var button = $(this);
+        var item_id = button.data('item-id');
+        var item_tipo = button.data('item-tipo');
+
+        if (button.hasClass('favorited')) {
+            $.ajax({
+                type: 'POST',
+                url: 'remove_favorite.php', // Arquivo PHP para remover dos favoritos
+                data: { item_id: item_id, item_tipo: item_tipo },
+                success: function(response) {
+                    if (response === 'removed') {
+                        button.removeClass('favorited');
+                        button.text('Save');
+                    } else {
+                        alert('Erro ao remover dos favoritos.');
+                    }
+                }
+            });
+        } else {
+            $.ajax({
+                type: 'POST',
+                url: 'add_favorite.php', // Arquivo PHP para adicionar aos favoritos
+                data: { item_id: item_id, item_tipo: item_tipo },
+                success: function(response) {
+                    if (response === 'success') {
+                        button.addClass('favorited');
+                        button.text('Favoritado');
+                    } else {
+                        alert('Erro ao adicionar aos favoritos.');
+                    }
+                }
+            });
+        }
+    });
+});
+
+</script>
