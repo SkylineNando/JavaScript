@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Obter Endereço IP</title>
+</head>
+<body>
+    <h1>Endereço IP do Usuário</h1>
+    <p id="ipAddress">Aguarde...</p>
+
+    <script>
+        const ipAddressElement = document.getElementById("ipAddress");
+
+        fetch("https://api.ipify.org?format=json")
+            .then(response => response.json())
+            .then(data => {
+                const ipAddress = data.ip;
+                ipAddressElement.textContent = `Seu endereço IP é: ${ipAddress}`;
+            })
+            .catch(error => {
+                ipAddressElement.textContent = "Erro ao obter o endereço IP.";
+                console.error(error);
+            });
+    </script>
+</body>
+</html>
