@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Encurtador de Links</title>
+</head>
+<body>
+    <h1>Encurtador de Links</h1>
+    <input type="text" id="originalLink" placeholder="Cole o link aqui">
+    <button onclick="encurtarLink()">Encurtar</button>
+    <p>Link encurtado: <a id="shortenedLink" target="_blank"></a></p>
+
+    <script>
+        async function encurtarLink() {
+            const originalLink = document.getElementById("originalLink").value;
+
+            const apiUrl = `https://is.gd/create.php?format=json&url=${encodeURIComponent(originalLink)}`;
+            const response = await fetch(apiUrl);
+
+            const data = await response.json();
+            if (data.shorturl) {
+                const shortenedLink = data.shorturl;
+                document.getElementById("shortenedLink").href = shortenedLink;
+                document.getElementById("shortenedLink").textContent = shortenedLink;
+            } else {
+                document.getElementById("shortenedLink").textContent = "Erro ao encurtar o link.";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificação de Senha</title>
+</head>
+<body>
+    <h1>Cadastro</h1>
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" oninput="checkPasswordMatch()" />
+    <br />
+    <label for="confirmarSenha">Confirmar Senha:</label>
+    <input type="password" id="confirmarSenha" oninput="checkPasswordMatch()" />
+    <br />
+    <input type="checkbox" id="mostrarSenhas" onchange="togglePasswordVisibility()" />
+    <label for="mostrarSenhas">Mostrar Senhas</label>
+    <br />
+    <button id="cadastrar" onclick="cadastrarUsuario()" disabled>Cadastrar</button>
+    <p id="mensagemErro"></p>
+
+    <script>
+        const senhaInput = document.getElementById("senha");
+        const confirmarSenhaInput = document.getElementById("confirmarSenha");
+        const cadastrarButton = document.getElementById("cadastrar");
+        const mensagemErro = document.getElementById("mensagemErro");
+
+        function checkPasswordMatch() {
+            const senha = senhaInput.value;
+            const confirmarSenha = confirmarSenhaInput.value;
+
+            if (senha === confirmarSenha) {
+                cadastrarButton.disabled = false;
+                mensagemErro.textContent = "";
+            } else {
+                cadastrarButton.disabled = true;
+                mensagemErro.textContent = "As senhas não coincidem.";
+            }
+        }
+
+        function togglePasswordVisibility() {
+            const mostrarSenhasCheckbox = document.getElementById("mostrarSenhas");
+
+            if (mostrarSenhasCheckbox.checked) {
+                senhaInput.type = "text";
+                confirmarSenhaInput.type = "text";
+            } else {
+                senhaInput.type = "password";
+                confirmarSenhaInput.type = "password";
+            }
+        }
+
+        function cadastrarUsuario() {
+            const senha = senhaInput.value;
+
+            // Verificar se a senha está correta (por exemplo, ter um comprimento mínimo)
+            if (senha.length < 8) {
+                mensagemErro.textContent = "A senha deve ter pelo menos 8 caracteres.";
+                return;
+            }
+
+            // Simulação de cadastro bem-sucedido
+            alert("Cadastro realizado com sucesso!");
+            // Aqui você pode enviar os dados do usuário para o servidor, por exemplo.
+
+            // Limpar os campos e redefinir tudo
+            senhaInput.value = "";
+            confirmarSenhaInput.value = "";
+            cadastrarButton.disabled = true;
+            mensagemErro.textContent = "";
+            document.getElementById("mostrarSenhas").checked = false;
+            senhaInput.type = "password";
+            confirmarSenhaInput.type = "password";
+        }
+    </script>
+</body>
+</html>

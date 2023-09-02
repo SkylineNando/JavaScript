@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerenciador de Links</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #linkList {
+            list-style: none;
+            padding: 0;
+        }
+        .linkItem {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .linkItem a {
+            text-decoration: none;
+            color: #333;
+            margin-right: 10px;
+        }
+        .removeLink {
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gerenciador de Links</h1>
+    <input type="text" id="newLink" placeholder="Cole o link aqui">
+    <button onclick="adicionarLink()">Adicionar Link</button>
+    <ul id="linkList"></ul>
+
+    <script>
+        const linkList = document.getElementById("linkList");
+
+        function adicionarLink() {
+            const newLinkInput = document.getElementById("newLink");
+            const newLink = newLinkInput.value;
+
+            if (newLink) {
+                const linkItem = document.createElement("li");
+                linkItem.className = "linkItem";
+
+                const linkAnchor = document.createElement("a");
+                linkAnchor.href = newLink;
+                linkAnchor.textContent = newLink;
+                linkItem.appendChild(linkAnchor);
+
+                const removeLink = document.createElement("span");
+                removeLink.className = "removeLink";
+                removeLink.textContent = "Remover";
+                removeLink.onclick = function() {
+                    linkList.removeChild(linkItem);
+                };
+                linkItem.appendChild(removeLink);
+
+                linkList.appendChild(linkItem);
+                newLinkInput.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
