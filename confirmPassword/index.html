@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verificação de Senha</title>
+</head>
+<body>
+    <h2>Cadastro</h2>
+    <form id="registrationForm">
+        <label for="password">Senha Principal:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="button" id="showPasswordButton">Mostrar Senha</button><br><br>
+
+        <label for="confirmPassword">Confirme a Senha:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <button type="button" id="showConfirmPasswordButton">Mostrar Senha</button><br><br>
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        var passwordInput = document.getElementById("password");
+        var confirmPasswordInput = document.getElementById("confirmPassword");
+        var showPasswordButton = document.getElementById("showPasswordButton");
+        var showConfirmPasswordButton = document.getElementById("showConfirmPasswordButton");
+        var message = document.getElementById("message");
+
+        function showMessage(msg) {
+            message.textContent = msg;
+        }
+
+        showPasswordButton.addEventListener("click", function() {
+            togglePasswordVisibility(passwordInput);
+        });
+
+        showConfirmPasswordButton.addEventListener("click", function() {
+            togglePasswordVisibility(confirmPasswordInput);
+        });
+
+        function togglePasswordVisibility(inputElement) {
+            if (inputElement.type === "password") {
+                inputElement.type = "text";
+            } else {
+                inputElement.type = "password";
+            }
+        }
+
+        passwordInput.addEventListener("input", function() {
+            checkPasswordsMatch();
+        });
+
+        confirmPasswordInput.addEventListener("input", function() {
+            checkPasswordsMatch();
+        });
+
+        function checkPasswordsMatch() {
+            var password = passwordInput.value;
+            var confirmPassword = confirmPasswordInput.value;
+
+            if (password === confirmPassword) {
+                showMessage("Senhas coincidem.");
+            } else {
+                showMessage("As senhas não coincidem.");
+            }
+        }
+    </script>
+</body>
+</html>
