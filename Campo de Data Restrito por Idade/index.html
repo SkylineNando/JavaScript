@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentação: Campo de Data Restrito por Idade</title>
+</head>
+<body>
+<h1>Documentação: Campo de Data Restrito por Idade</h1>
+
+<h2>Descrição e Objetivo:</h2>
+<p>O código a seguir cria um campo de entrada de data em um formulário HTML com restrições de idade. Ele define a data mínima como 80 anos atrás a partir da data atual e a data máxima como 18 anos atrás a partir da data atual. Isso é útil em formulários que requerem a entrada da data de nascimento do usuário e desejam garantir que a idade do usuário esteja dentro de um determinado intervalo.</p>
+
+<h2>Código HTML:</h2>
+<pre>
+<code>&lt;input type="date" name="date" id="date" class="form-control"&gt;</code>
+</pre>
+
+<h2>Código JavaScript:</h2>
+<pre>
+<code>
+var currentDate = new Date();
+var minDate = new Date(currentDate.getFullYear() - 80, currentDate.getMonth(), currentDate.getDate());
+var maxDate = new Date(currentDate.getFullYear() - 18, currentDate.getMonth(), currentDate.getDate());
+document.getElementById('date').setAttribute('min', minDate.toISOString().split('T')[0]);
+document.getElementById('date').setAttribute('max', maxDate.toISOString().split('T')[0]);
+</code>
+</pre>
+
+</body>
+</html>
